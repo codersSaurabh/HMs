@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login Form</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background: rgb(34,193,195);
+        background-image: url("/static/image/close-up-doctor-with-copy-space_23-2148814244.avif");
+        background-size: cover; 
+}
+
+    .login-container {
+        width: 30vw;
+        background-color: #f4f4f4;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        position: absolute;
+        top: 50%;
+        left:70%;
+        transform: translate(-50%, -50%);
+    }
+
+    .login-container h2 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .form-group {
+        margin-bottom: 30px;
+    }
+
+    .form-group label {
+        display: block;
+        font-weight: bold;
+    }
+
+    .form-group input[type="text"],
+    .form-group input[type="password"] {
+        width: 70%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    .form-group input[type="submit"] {
+        width: 100%;
+        padding: 10px;
+        border: none;
+        border-radius: 4px;
+        background-color: #007bff;
+        color: #fff;
+        cursor: pointer;
+    }
+
+    .form-group input[type="submit"]:hover {
+        background-color: #0056b3;
+    }
+    .close {
+        color: #888;
+        float: right;
+        font-size: 25px;
+        font-weight: bold;
+        cursor: pointer;
+        margin-right:20px;
+        display:none;
+
+
+    }
+   
+    #modal-content {
+        background-color: #fefefe;
+        margin: 10% auto;
+        padding: 20px;
+        border: 1px solid #black;
+        width: 80%;
+        border-radius: 5px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        
+    }
+   
+
+    .close:hover,
+    .close:focus {
+        color: #000;
+        text-decoration: none;
+        cursor: pointer;
+    }
+</style>
+</head>
+<body>
+
+<div class="login-container">
+    <div class="container">
+        <div id="model-content" class="modal">
+        
+              <span class="close"  onclick="closeModal('model-content')">&times;
+              
+              
+              </span>
+              <p style="color:red">{{msg}}</p>
+           
+
+            </div>
+    <h2>Login</h2>
+    <form id="login-form" action="#" method="POST">{% csrf_token %}
+        <div class="form-group">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="doctorId" required>
+        </div>
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Login">
+            <div class="remember-forgot">
+                <!-- <label><input type="checkbox">Remember Me</label>-->
+                 <a href="/forgetDoctor/">Forgot Password?</a>
+             </div>
+            <p>Don't have an account?<a href="/doctorRegister/"> Register</a></p>
+        </div>
+    </form>
+</div>
+
+</body>
+<script>
+    {% if thank %}
+    document.getElementsByClassName('close')[0].style.display='inline';
+{% endif %}
+    function closeModal(modalId) {
+      var modal = document.getElementById(modalId);
+      modal.style.display = "none";
+    }
+    </script>
+</html>

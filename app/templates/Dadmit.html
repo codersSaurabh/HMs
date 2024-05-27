@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Portal - Patients</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        {% comment %} .container {
+            max-width: 135vh;
+            margin: 20px auto;
+            {% comment %} padding: 20px; {% endcomment %}
+            {% comment %} background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        } {% endcomment %} 
+        h1 {
+            background-color: darkorange;
+            text-align: center;
+        }
+         table {
+            
+            
+            margin-top: 20px;
+        }
+        table th, table td {
+            padding: 5px;
+            
+        } 
+       table th {
+            background-color: #f2f2f2;
+        }
+        .message{
+            position: absolute;
+      display: none;
+     
+   
+      background-color: #f0f0f0;
+      left:50%;
+      top:50%;
+      transform: translate(-50%,-50%);
+      width:15vw;
+      
+    }
+            .message-box {
+      position: fixed;
+      text-align: center;
+      background-color: #fff;
+      padding: 20px;
+      border: 2px solid #ccc;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
+    .closed {   
+    color: #171717;
+    margin-left:85%;
+    font-size: 25px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 999;
+}
+
+.closed:hover,
+.closed:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}  
+        
+        
+    </style>
+</head>
+<body>
+    <div class="container mt-3">
+        <div class="message" id="model-content">
+            <span
+            class="closed"
+                  onclick="closeModal('model-content')"
+            >&times;
+          </span>
+          <div class="message-box">
+            <p><strong>Today Bill is UnPaid</strong><br>
+            Pay the Bill to Discharge</p>
+          </div>
+          </div>
+        <h1>Patient For You</h1>
+        <table class="table"border="1" >
+            <thead class="thead">
+                <tr>
+                    
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Gender</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Disease</th>
+                    <th>Bed_NO</th>
+                    <th>Admit Date</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    {% for i in data %}
+                    <td>{{i.Name}}</td>
+                    <td>{{i.Age}}</td>
+                    <td>{{i.Gender}}</td>
+                    <td>{{i.Email}}</td>
+                    <td>{{i.Contact}}</td>
+                    <td>{{i.Disease}}</td>
+                    <td>{{i.Bed_no}}</th>
+                    <td>{{i.aDate}}</td>
+                   <td> 
+                    <a class="btn btn-success ml-3" href="/dischargePatient/{{i.Patient_id}}" role="button">Discharge</a></td>
+                </tr>
+                {% endfor %}
+                <!-- Add more rows for other patients -->
+            </tbody>
+        </table>
+  </div>
+</body>
+<script>
+    function closeModal(modalId) {
+var modal = document.getElementById(modalId);
+modal.style.display = "none";}
+{% if thank == "True" %}
+element=document.getElementsByClassName("message")[0]
+element.style.display="flex";
+{% endif %}
+</script>
+</html>

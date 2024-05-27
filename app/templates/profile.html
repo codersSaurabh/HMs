@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital Doctors</title>
+    <link rel="stylesheet" href="/static/profile.css">
+
+</head>
+<body>
+    <div class="main">
+        <div class="container">
+
+
+            <img src="/media/{{data.Profile}}" class="circle"></img>
+
+
+
+            <div class="about">
+                <h3>PROFILE</h3>
+                <P>{{data.Name}}
+                    <br>
+                    MBBS <br>
+                    AIIMS Hospital, Delhi,
+                    India
+                </P>
+
+                <h3>SPECIALITY</h3>
+                <h4>{{data.Specialty}}</h4>
+
+                <h3>Salary</h3>
+                <p>{{data.Salary}}</p>
+                <h3>Contact</h3>
+                <p>{{data.Contact}}</p>
+
+                <h3>Address</h3>
+                <p> {{data.City}}<br>
+                    {{data.Country}}</p>
+                <div class="fees">
+                    <h3>FEE</h3>
+                    <p>&#x20B9; {{data.Fee}}</p>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="boxes">
+            <div class="box">
+                <h2 id="total">00</h2>
+                <p>Total</p>
+            </div>
+            <div class="box">
+                <h2 id="active">00</h2>
+                <p>Active</p>
+            </div>
+            <div class="box">
+                <h2 id="pending">00</h2>
+                <p id="pending">Pending</p>
+            </div>
+            <div class="box">
+                <h2 id="discharge">00</h2>
+                <p>Discharge</p>
+            </div>
+        </div>
+    </div>
+    </body>
+
+   <script>
+    let active=setInterval(activef,200)
+    let total=setInterval(activet,200)
+    let pending=setInterval(activep,200)
+    let discharge=setInterval(actived,200)
+    var a=00
+    let t=00
+    let p=00
+    let d=00
+    
+    function activef(){
+        document.getElementById("active").innerHTML=a
+        a++;
+       if (a > {{data.Active}}){
+        clearInterval(active)
+          }
+    }
+     
+     function activet(){
+        document.getElementById("total").innerHTML=t
+        t++;
+        if (t > {{data.total}}){
+        clearInterval(total)
+        }
+     }
+     function activep(){
+        document.getElementById("pending").innerHTML=p
+        p++;
+        if (t > {{data.pending}}){
+        clearInterval(pending)
+        }
+     }
+     function actived(){
+        document.getElementById("discharge").innerHTML=d
+        d++;
+        if (t > {{data.discharge}}){
+        clearInterval(discharge)
+        }
+     }
+        
+       
+        
+    
+
+
+    
+
+   </script>
+
+</html>

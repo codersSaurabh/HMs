@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discharge Record</title>
+     <link rel="stylesheet" href="Discharge.css">
+</head>
+<body>
+    <header>
+        <h1>Discharge Record</h1>
+    </header>
+    <main>
+        <!-- Your form goes here -->
+        <form action="submit_discharge.php" method="POST">
+            <label for="patient_name">Patient Name:</label>
+            <input type="text" id="patient_name" name="patient_name" required>
+        
+            <label for="discharge_date">Discharge Date:</label>
+            <input type="date" id="discharge_date" name="discharge_date" required>
+        
+            <label for="reason">Reason for Discharge:</label>
+            <textarea id="reason" name="reason" rows="4" required></textarea>
+        
+            <input type="submit" value="Submit">
+        </form>
+        
+    </main>
+    <footer>
+        
+        <p>&copy; 2024 Hospital Management System</p>
+    </footer>
+</body>
+</html>

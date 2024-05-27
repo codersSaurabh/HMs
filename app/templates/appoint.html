@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link
+    href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css"
+    rel="stylesheet"
+/>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+       
+        html,body{
+            width: 100%;
+            height: 100%;
+        }
+        #container{
+            width: 100%;
+            height: 100%;
+            display: flex;
+        }
+        #left{
+            width: 13%;
+            height: 100%;
+            background-color: rgba(14, 243, 94, 0.836);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+
+            
+        }
+        #profile{
+            margin-top: 2vh;
+            width: 15%;
+            height: 30%;
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            left: 40%;
+           
+            align-items: center;
+            gap: 7px;
+            
+            
+        }
+        #profile p{
+
+            font-size: 0.8rem;
+            text-align: center;
+        }
+        #profile h2{
+            font-weight: 500;
+            text-align: center;
+        }
+        #profile img{
+            width: 8vw;
+            height: 50vh;
+            border-radius: 100%;
+            border: 2px solid rgb(204, 204, 67);
+        }
+        #links{
+            margin-top: 20%;
+            margin-left: 2%;
+            width: 15%;
+            height: 50%;
+            position: absolute;
+            top: 30%;
+            
+
+
+        }
+        #element{
+            margin-top: 2vh;
+            display: flex;
+            gap: 1vw;
+            color: white;
+        }
+        #element a{
+            text-decoration: none;
+            color: white;
+        }
+       #right{
+             width: 90%;
+            height: 100%;
+            
+       }
+       #right #head{
+        padding: 5px;
+        width: 100%;
+        height: 6%;
+        background-color: rgba(0, 0, 255, 0.682);
+        display: flex;
+        justify-content: space-between;
+        color: white;
+       }
+       #head h3{
+        font-size: 1rem;
+       }
+       #head a button{
+            background-color:rgba(0, 0, 255, 0.682);
+            color: white;
+            border: none;
+       }
+
+
+        #boxes{
+            
+            display: flex;
+            width: 100%;
+            gap: 20px;
+            height: 40%;
+            padding: 1%;
+            margin-top: 3%;
+        }
+        #box1{
+            background-color:blue;
+            width:60%;
+            height:60%;
+            display: flex;
+            position: relative;
+
+        }
+        
+        #box2{
+            background-color: green;
+            width:70%;
+            height:60%;
+            position: relative;
+            display: flex;
+        }
+       .text{
+            position: absolute;
+            top: 35%;
+            left: 5%;
+            color: rgba(255, 255, 255, 0.807);
+        }
+        #icone{
+            position: absolute;
+            top: 32%;
+            right: 3%;
+            height: 50%;
+            width: 20%;
+            background-color:white;
+            border-radius: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #icone i{
+            font-size: 1.5rem;
+        }
+        .table-container {
+        padding: 20px;
+       
+        overflow-x: auto;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    table th, table td {
+        border: 1px solid #ccc;
+        padding: 8px;
+        text-align: center;
+    }
+
+    table th {
+        background-color: #007bff;
+        color: #fff;
+    }
+    .logout-btn {
+        background-color: #042366;
+        color: #fff;
+        border: none;
+        padding: 8px 16px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        text-decoration: none;
+        }
+    .logout-btn:hover {
+        background-color: #c82333;
+    }
+
+    table tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+    a{
+        text-decoration: none;
+        color: white;
+    }
+    .close {
+        color: #888;
+        float: right;
+        font-size: 25px;
+        font-weight: bold;
+        cursor: pointer;
+        margin-right:20px;
+        display:none;
+
+
+    }
+   
+    #modal-content {
+        background-color: #fefefe;
+        margin: 10% auto;
+        padding: 20px;
+        border: 1px solid #black;
+        width: 80%;
+        border-radius: 5px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        
+    }
+   
+
+    .close:hover,
+    .close:focus {
+        color: #000;
+        text-decoration: none;
+        cursor: pointer;
+    }
+    .containers{
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 40vw;
+            position: absolute;
+            left: 50%;
+            top: 55%;
+            transform: translate(-50%,-50%);
+
+        }
+
+        input[type="text"], select {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="left">
+            <div id="profile">
+                {% if gender == "Male" %}
+                <img src="/media/images/male.jpg" alt="">
+                    {% else %}
+                    <img src="/media/images/female.png" alt="">
+                {% endif %}
+
+                <p>Patient</p>
+
+                <h6>{{email}}</h6>
+            </div>
+            <div id="links">
+                <div id="element">
+                    <i class="ri-calendar-2-line"></i>
+                    <a href="/Pappointment/{{email}}">Appointment</a>
+                </div>
+                
+                <div id="element">
+                    <i class="ri-checkbox-circle-fill"></i>
+                    <a href="/Pdischarge/{{email}}">Discharged</a>
+                </div>
+            </div>
+        </div>
+        <div id="right">
+            <div id="head">
+                <h3>HOSPITAL MANAGEMENT</h3>
+                <a href="/logoutpatient/" class="logout-btn">logout</a>
+            </div>
+            <div class="containers">
+                <div id="model-content" class="modal">
+                    <span
+                      class="close"
+                      style="display: none"
+                      onclick="closeModal('model-content')"
+                      >&times;
+                    </span>
+                    <p style="color: red">{{msg}}</p>
+                  </div>
+                <h2>Book Appointment</h2>
+                <form action="#" method="post">{% csrf_token %}
+                  
+                    <input type="text" id="patientName" name="patientName" placeholder="Enter patient name" required>
+                 
+                    <input type="text" id="patientName" name="Age" placeholder="Enter patient Age" required>
+                    
+                    <input type="text" id="patientName" name="Blood_group" placeholder="Enter patient Blood_group" required>
+                    <label for="patientName">Date</label>
+                    <input type="date" id="patientName" name="Date" required>
+                    <label style="margin-left:2%;"for="patientName">Time</label>
+                    <input type="time"  placeholder="time" name="time" min="09:00" max="16:45" required >
+                    <br>
+                    
+                    <select value="" name="Gender" required>
+                        <option selected disabled>Gender</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Transgender">Transgender</option>
+                      </select>
+        
+                    <label for="doctorName">Doctor Name</label>
+                    <td><select name="doctor" required>
+                        <option value=""  selected disabled>Doctor/Speciality</option>
+                        {% for data in doctors %}
+                        <option value={{data.Doctor_id}} >{{data.Name}}/{{data.Specialty}}</option>
+                        {% endfor %}
+                      </select></td>
+        
+                    <label for="description">Description</label>
+                    <textarea id="description" name="description" placeholder="Enter description" style="height:100px" required></textarea>
+        
+                    <input type="submit" value="Book Appointment">
+                </form>
+            </div>
+   
+        </div>
+    </div>
+</body>
+<script>
+    {% if thank %}
+      document.getElementsByClassName('close')[0].style.display='inline';
+
+  {% endif %}
+  function closeModal(modalId) {
+    var modal = document.getElementById(modalId);
+    modal.style.display = "none";
+  }
+</script>
+   </html>
+       
+
+        
+   
+    

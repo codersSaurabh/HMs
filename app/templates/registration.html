@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form</title>
+    <link rel="stylesheet" href="/static/stylereg.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div id="model-content" class="modal">
+        <span
+          class="close"
+          style="display: none"
+          onclick="closeModal('model-content')"
+          >&times;
+        </span>
+        <p style="color:{{color}}">{{msg}}</p>
+      </div>
+
+      <h1>DOCTOR REGISTRATION FORM</h1>
+
+      <form action="#" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <table>
+          <tr>
+            <td>
+              <input type="text" placeholder="Name" name="name" required />
+            </td>
+
+            <td>
+              <input type="email" placeholder="Email" name="email" required />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <input
+                type="password"
+                placeholder="Password"
+                name="password"
+                minlength="6"
+                required
+              />
+            </td>
+            <td><input type="date" placeholder="DOB" name="dob" required /></td>
+          </tr>
+
+          <tr>
+            <td><input type="tel" name="contact" pattern="[0-9]{10}"  placeholder="Contact" maxlength="11"  required/></td>
+            <td>
+              <input
+                type="text"
+                placeholder="Medical ID"
+                name="medicalId"
+                required
+              />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              
+               <input type="text" name="country"placeholder="country" required/>
+            </td>
+            <td>
+              <select name="specialty" required>
+                <option value="" selected disabled>Specialty</option>
+                {% for i in doctor_salary%}
+                <option>{{i}}</option>
+                {% endfor %}
+                
+
+
+              </select>
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              <select name="language" required>
+                <option value="" selected disabled>Language</option>
+                <option>English</option>
+                <option>Hindi</option>
+              </select>
+            </td>
+            <td>
+              
+                <input type="text" name="city"placeholder="City" required/>
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              <h5>Upload your Image:</h5>
+              <input type="file" name="image" id="fileToUpload" required />
+            </td>
+            <td>
+              <div class="input box">
+              <select name="gender" class="select" required>
+                <option value="" selected disabled>Gender</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Transgender">Transgender</option>
+              </select>
+          </div>
+          </td>
+          </tr>
+
+          <tr>
+            <td>
+              <input type="submit" class="button" value="Register Now" />
+            </td>
+          </tr>
+        </table>
+      </form>
+    </div>
+  </body>
+  <script>
+      {% if thank %}
+        document.getElementsByClassName('close')[0].style.display='inline';
+
+    {% endif %}
+    function closeModal(modalId) {
+      var modal = document.getElementById(modalId);
+      modal.style.display = "none";
+    }
+  </script>
+</html>

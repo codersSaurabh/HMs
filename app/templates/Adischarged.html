@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Portal - Discharged Patients</title>
+                <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        {% comment %} .container {
+            max-width: 135vh;
+            margin: 20px auto;
+            {% comment %} padding: 20px; {% endcomment %}
+            {% comment %} background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        } {% endcomment %} 
+        h1 {
+            background-color: darkorange;
+            text-align: center;
+        }
+         table {
+            
+            
+            margin-top: 20px;
+        }
+        table th, table td {
+            padding: 5px;
+            
+        } 
+       table th {
+            background-color: #f2f2f2;
+        }
+        
+</style>
+</head>
+<body>
+    <div class="container mt-3">
+        <!-- Button trigger modal -->
+
+  
+  <!-- Modal -->
+ 
+        <h1> Your Discharged Patient</h1>
+        <table class="table" border="1">
+            <thead class="thead">
+       
+                <tr>
+                    <th>Name</th>
+                    <th>Patient_Id</th>
+                    <th>Doctor</th>
+                    <th>Age</th>
+                    <th>Gender</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Admit Date</th>
+                    <th>Discharge Date</th>
+                    <th>Bill</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    {% for i in data %}
+                    
+                    <td>{{i.Name}}</td>
+                    <td>{{i.Patient_id}}</td>
+                    <td>{{i.dName}}</td>
+                    <td>{{i.Age}}</td>
+                    <td>{{i.Gender}}</td>
+                    <td>{{i.Email}}</td>
+                    <td>{{i.Contact}}</td>
+                    <td>{{i.aDate}}</td>
+                    
+                    <td>{{i.dDate}}</td>
+                    <td>
+                    <a class="btn btn-primary ml-3" href="/showbill/{{i.Patient_id}},all" role="button">Check</a></td> 
+                    
+                    
+                </tr>
+                
+                {% endfor %}
+                 
+                <!-- Add more rows for other discharged patients -->
+            </tbody>
+        </table>
+        </div>
+</body>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+   
+</html>

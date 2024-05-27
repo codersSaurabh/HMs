@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Billing Page</title>
+    <link rel="stylesheet" href="/static/billing.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Billing Details</h1>
+        <div class="patient-details">
+            <h2>Patient Information</h2>
+            
+            <p><strong>Name:</strong>{{data.Name}}</p>
+            <p><strong>Mobile No.:</strong> {{data.Contact}}</p>
+            <p><strong>Address:</strong> {{data.Address}}</p>
+            <p><strong>Admit Date:</strong> {{detail.Admit_Date}}</p>
+            <p><strong>Release Date:</strong>
+                {% if detail.Discharge_Date == 'None' %}
+                Not Discharged yet
+                {% else %}
+                {{detail.Discharge_Date}}
+            {% endif%}</p>
+            {% if day == "today"%}
+            
+            
+            <p><strong>Date:</strong> {{date}}</p>
+            {% else %}
+            <p><strong>Bill Date to:</strong>{{date}}</p>
+            <p><strong>Day Spend:</strong> {{days}}</p>
+            {% endif %}
+            <p><strong>Doctor Name:</strong> Dr. {{Doctor.Name}}</p>
+            <p><strong>Disease:</strong>{{data.Disease}}</p>
+            
+        </div>
+        <div class="billing-summary">
+            <h2>Billing Summary</h2>
+            <table id="billing-table">
+                <tr>
+                    <th>Description</th>
+                    <th>Amount</th>
+                </tr>
+                <tr>
+                    <td>Room Charges</td>
+                    <td>&#8377;{{bill.Room_charges}}</td> <!-- Example room charge per day -->
+                </tr>
+                <tr>
+                    <td>Doctor Fee</td>
+                    <td>&#8377;{{bill.Doctor_charges}}</td> <!-- Example doctor fee -->
+                </tr>
+                <tr>
+                    <td>Medicine Cost</td>
+                    <td>&#8377;{{bill.Medicine_charges}}</td> <!-- Example medicine cost -->
+                </tr>
+                <tr>
+                    <td>Other Charges</td>
+                    <td>&#8377;{{bill.Other_charges}}</td> <!-- Example other charges -->
+                </tr>
+                <tr style="background-color:black;color:white">
+                    <td>Total</td>
+                    <td id="totalAmount">&#8377;{{bill.Amount}}</td> <!-- Example other charges -->
+                </tr>
+                <tr>
+                    <td>Balance</td>
+                    <td>&#8377;{{bill.Balance}}</td>
+                </tr>
+                
+               
+            </table>
+        </div>
+    </div>
+    <button id="myButton" onclick="downloadPDF()">Download</button>
+
+</body>
+    <script> 
+        function downloadPDF() {
+            var button = document.getElementById("myButton");
+            document.body.removeChild(button);
+            const element = document.body; // Get the body element
+            
+            // Wait for a short delay for content to render
+            setTimeout(() => {
+                html2pdf(element);
+            }, 100);
+           
+          
+            setTimeout(function() {
+                // Your code here
+                document.body.appendChild(button)
+            }, 1000);
+        }
+    </script>
+
+</html>

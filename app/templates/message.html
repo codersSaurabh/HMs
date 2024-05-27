@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Centered Message Box</title>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #f0f0f0;
+    }
+    .message-box {
+        width: 300px;
+        padding: 20px;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        text-align: center;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+</style>
+</head>
+<body>
+    <div class="message-box">
+       <h2>Oops! Your {{msg}} is not approved yet..</h2>
+        <p>Please Regularly check your email.</p>
+        <p>Shortly You will get your Id from the management team</p>
+        <P>Please Try again later thank you!!</P>
+        <p>click here to go home<p><a href="/">Home</a>        
+    </div>

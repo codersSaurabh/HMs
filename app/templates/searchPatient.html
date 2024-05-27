@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Patient Search</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+    }
+    .container {
+        max-width: 400px;
+        margin: 50px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+        align-items:center;
+    }
+    h1 {
+        text-align: center;
+        color: #333;
+    }
+    input[type="text"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        display:block;
+    }
+    input[type="submit"] {
+        background-color: #007bff;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+
+    }
+    input[type="submit"]:hover {
+        background-color: #0056b3;
+    }
+    .result {
+        margin-top: 5px
+        padding: 20px;
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+        align-items:center;
+        {% comment %} border: 1px solid #ccc;
+        border-radius: 5px; {% endcomment %}
+    }
+   
+
+    table  td,th{
+        
+        padding: 2rem;
+        border-collapse:collapse;
+        
+        
+    }
+</style>
+
+</head>
+<body>
+
+<div class="container">
+    <h2><a href="/">Home</a></h2>
+    <h1>Patient Search</h1>
+    <form id="searchForm" method="post" action="/SearchPatient/{{Doctor}}">{% csrf_token%}
+        <input type="text" id="doctorId" placeholder="Enter Patient ID" name="id">
+        <input type="submit" value="Search">
+    </form>
+    </div>
+
+    <div id="result" class="result"><p>{{data.Patient_id}}<p>
+        <table id="Table" border="1" >
+            <tr>
+                <th>
+                Name
+                </th>
+            <td>
+            {{data.Name}}
+            </td></tr>
+            <tr><th>Patient_ID</th>
+            <td>{{data.Patient_id}}</td>
+        </tr>
+        <tr><th>Gender</th>
+        <td>{{data.Gender}}</td></tr>
+            <tr>
+                <th>Disease</th>
+                <td>{{data.Disease}}</td>
+            </tr>
+            <tr><th>Blood Group</th>
+            <td>{{data.Blood_Group}}</td></tr>
+            <tr>
+                <th>Appointed Doctor</th>
+                <td>{{doctor.Name}} / {{doctor.Specialty}}</td>
+            </tr>
+            <tr><th>
+                Appointment Date
+            </th>
+                <td>{{data.Date}}</td>
+            </tr>
+            <tr>
+                <th>Current Status</th>
+                <td>{% if data.appointed != 'True' %}
+                    Appointment pending
+                    {% elif data.checked == "True" %}
+                    Checked
+                    {% elif data.checked != "True" and data.admitted != "True" %}
+                    Appointment Confirmed
+                    {%elif data.admitted == "True" and data.discharged == "False" %}
+                    Admitted
+                    {% else %}
+                    discharged
+                    {% endif %}
+                    
+                        </td>
+            </tr>
+            {% if data.admitted == "True" %}
+            <tr>
+                <th>Admitted On</th>
+                <td>{{date.Admit_Date}}</td>
+            </tr>
+            {% endif %}
+            {% if data.discharged == "True" %}
+            <tr>
+                <th>Discharged  On</th>
+                <td>{{date.Discharge_Date}}</td>
+            </tr>
+            {% endif %}
+        </table>
+        <div class="container" id="contain">
+           
+            <h2 style="color:#007bff;font-weight: 999;">Bill</h2>
+            {% if  data.admitted == "True" and data.discharged == "False" %}
+            <a class="btn btn-primary ml-3" href="/showbill/{{data.Patient_id}},today" role="button">Today</a>
+
+            {% endif %}
+            {% if data.admitted == "True" %}
+            <form id="searchForm" action="/showbill/{{data.Patient_id}},all" method="post">{% csrf_token%}
+               
+                <br>
+                <label><h3><strong><u>Day Wise</u></strong></h3></label><br>
+                <b>From:</b> <input type="Date" placeholder="From" name="from"><br><br>
+               <b>To :</b>&ensp;&ensp; <input type="Date" placeholder="To" name="to"><br><br>
+                <center><input type="submit" value="check"><br></center>
+                {% endif %}
+              
+            </form>
+            </div>
+    </div>
+</div>
+</body>
+<script>
+    {% if Error == True %}
+    element=document.querySelector("#Table");
+    element.style.display="none";
+    element=document.querySelector("#contain");
+    element.style.display="none";
+    {% endif %}
+    {% if Show == False %}
+    
+    element=document.querySelector("#Table");
+    element.style.display="none";
+    element=document.querySelector("#contain");
+    element.style.display="none";
+    {% endif %}
+    {% if Doctor == 'True' %}
+    element=document.querySelector("#contain");
+    element.style.display="none";
+    {% endif %}
+</script>
+</html>

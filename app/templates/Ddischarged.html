@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Portal - Discharged Patients</title>
+                <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        {% comment %} .container {
+            max-width: 135vh;
+            margin: 20px auto;
+            {% comment %} padding: 20px; {% endcomment %}
+            {% comment %} background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        } {% endcomment %} 
+        h1 {
+            background-color: darkorange;
+            text-align: center;
+        }
+         table {
+            
+            
+            margin-top: 20px;
+        }
+        table th, table td {
+            padding: 5px;
+            
+        } 
+       table th {
+            background-color: #f2f2f2;
+        }
+   
+    </style>
+</head>
+<body>
+    <div class="container mt-3">
+      
+        <h1> Your Discharged Patient</h1>
+        <table class="table" border="1">
+            <thead class="thead">
+       
+                <tr>
+                    <th>Name</th>
+                    <th>Patient_Id</th>
+                    <th>Age</th>
+                    <th>Gender</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Admit Date</th>
+                    <th>Discharge Date</th>
+                   
+                    
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    {% for i in data %}
+                    
+                    <td>{{i.Name}}</td>
+                    <td>{{i.Patient_id}}</td>
+                    <td>{{i.Age}}</td>
+                    <td>{{i.Gender}}</td>
+                    <td>{{i.Email}}</td>
+                    <td>{{i.Contact}}</td>
+                    <td>{{i.aDate}}</td>
+                    
+                    <td>{{i.dDate}}</td>
+                    
+                    
+                </tr>
+                
+                {% endfor %}
+                 
+                <!-- Add more rows for other discharged patients -->
+            </tbody>
+        </table>
+        </div>
+</body>
+
+</html>

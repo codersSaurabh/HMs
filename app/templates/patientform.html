@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=p;, initial-scale=1.0">
+    <title>Patient Form</title>
+    <link rel="stylesheet" href="/static/stylepatientform.css">
+</head>
+<body>
+    <body>
+        <div class="containers">
+            <div id="model-content" class="modal">
+                <span
+                  class="close"
+                  style="display: none"
+                  onclick="closeModal('model-content')"
+                  >&times;
+                </span>
+                <p style="color:{{color}}">{{msg}}</p>
+              </div>
+            <h1>PATIENT REGISTRATION FORM</h1>
+         <form action="#" method="POST">{% csrf_token %}
+            <table>
+                <tr>
+                    <td><div class="input box">
+                        <input type="text" minlength="3" placeholder="Patient Name" name="name" required>
+                    </div></td>
+                    <td><div class="input box">
+                        <input type="text"  placeholder="Patient Age" name="age" required>
+                    </div></td>
+                </tr>
+                <tr>
+                    <td><div class="input box">
+                        <input type="text"  placeholder="Email" name="email" required>
+                    </div></td>
+                    <td><div class="input box">
+                        <input type="text"  placeholder="Address" name="address" required>
+                    </div></td>
+                </tr>
+                <tr>
+                    <td><div class="input box">
+                        <input type="tel" pattern="[0-9]{10}"  placeholder="Contact No" name="contact" maxlength="11" required>
+                    </div></td>
+                    <td><div class="input box">
+                        <input type="text"  placeholder="Disease" name="Disease" required>
+                    </div></td>
+                </tr>
+                <tr>
+                    <td><div class="input box">
+                        <input type="text"  placeholder="Blood Group" name="blood" >
+                    </div></td>
+                    <td><select class="select" name="doctor" required>
+                        <option value=""  selected disabled>Doctor/Speciality</option>
+                        {% for data in doctors %}
+                        <option value={{data.Doctor_id}} >{{data.Name}}/{{data.Specialty}}</option>
+                        {% endfor %}
+                      </select></td>
+
+                    
+ </tr>
+ <tr>
+    <td><div class="input box">
+        <input type="date"  placeholder="date" name="date" required >
+    </div></td>
+    <td><div class="input box">
+        <input type="time"  placeholder="time" name="time" min="09:00"  max="16:45" required >
+    </div></td>
+</tr>
+<tr>
+    <td>
+        <div class="input box">
+        <select name="gender" class="select" required>
+          <option value="" selected disabled>Gender</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+          <option value="Transgender">Transgender</option>
+        </select>
+    </div>
+    </td>
+    <td>
+        <input
+          type="password"
+          placeholder="Password"
+          name="password"
+          maxlength="10"
+          required
+        />
+      </td></tr>
+
+                    <tr>
+                        <td> 
+                          <input type="submit" class="button"value="Register Now"></td>
+                          
+                       </tr>
+            </table>
+            <p >Already a Patient<a href="/patientlogin/" > LogIn</a></p>
+             
+             
+           
+             
+         </form>
+        </div> 
+     </body>
+     </html>
+    
+</body>
+<script>
+    {% if thank %}
+      document.getElementsByClassName('close')[0].style.display='inline';
+
+  {% endif %}
+  function closeModal(modalId) {
+    var modal = document.getElementById(modalId);
+    modal.style.display = "none";
+  }
+</script>
+</html>

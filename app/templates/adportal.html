@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hospital Admin Portal</title>
+<link
+    href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css"
+    rel="stylesheet"
+/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<style>
+    /* Resetting default margin and padding */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    /* Body styles */
+    body,html {
+        font-family: Arial, sans-serif;
+        background-color: #f2f2f2;
+        line-height: 1.6;
+        width:100%;
+        height: 100%;
+    }
+    
+
+    /* Navbar styles */
+    .navbar {
+        background-color: #21295c;
+        color: #fff;
+        padding: 10px;
+        text-align: center;
+    }
+
+    nav a {
+        color: #fff;
+       
+        text-decoration: none;
+        padding: 10px 20px;
+        margin: 0 10px;
+    }
+    nav select{
+        border:none;
+        background-color: #21295c;
+        color:white;
+        cursor:pointer;
+        margin: 0 10px;
+    }
+
+    nav a:hover {
+        background-color: #0057b373;
+        color:black
+    }
+
+    /* Container styles */
+    .container {
+        max-width: 1200px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        position: relative;
+        
+    }
+    #boxes{
+            
+            display: flex;
+            width: 100%;
+            gap: 20px;
+            height: 25%;
+            padding: 1% ;
+            justify-content: center;
+            align-items: center;
+        }
+        #box1{
+            background-color:#1b3b6f;
+            width:40%;
+            height:100%;
+            display: flex;
+            position: relative;
+
+        }
+        
+        #box2{
+            background-color: #065a82;
+            width:40%;
+            height:100%;
+            position: relative;
+            display: flex;
+        }
+        #box3{
+            position: relative;
+            background-color:#1c7293;
+            width:40%;
+            height:100%;
+            display: flex;
+            
+        }
+        .text{
+           position: absolute;
+           top: 20%;
+           left: 5%;
+           color: rgba(255, 255, 255, 0.807);
+       }
+
+    #tables{
+        display: flex;
+        gap: 10%;
+    }
+    @media(max-width:700px){
+        #tables{
+            flex-direction:column;
+        }
+        nav a,select {
+            padding: 5px;
+        
+       
+        }
+       
+    
+    }
+    @media(max-width:1200px){
+        #boxes{
+            display: none;
+        }
+    }
+
+    /* Heading styles */
+    .heading {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    /* Button styles */
+    .btn {
+        background-color: #28a745;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-right: 10px;
+        text-decoration: none;
+    }
+
+    .btn:hover {
+        background-color: #218838;
+    }
+
+    .logout-btn {
+        background-color: #042366;
+        color: #fff;
+        border: none;
+        padding: 8px 16px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .logout-btn:hover {
+        background-color: #c82333;
+    }
+
+    /* Table styles */
+    .table-container {
+        margin-top: 20px;
+        overflow-x: auto;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    table th, table td {
+        border: 1px solid #ccc;
+        padding: 8px;
+        text-align: center;
+    }
+
+    table th {
+        background-color: #053b61;
+        color: #fff;
+    }
+
+    table tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+    #icone{
+            position: absolute;
+            top: 32%;
+            right: 3%;
+            height: 50%;
+            width: 20%;
+            background-color:white;
+            border-radius: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #icone i{
+            font-size: 1.5rem;
+        }
+
+</style>
+</head>
+<body>
+<div class="navbar">
+    <h2>Admin Portal</h2>
+    <nav class="navbar">
+        
+        <a href="#" style="color:black;">Dashboard</a>
+        <a href="/Adoctors/" >Doctors</a>
+        <a href="/Apatients/" >Patients</a>
+        <select name="Search" onchange="window.location=`/Aappointments/`+this.value;">
+            <option value="#" selected disabled >Appointment</option>
+            <option value="{{data.Doctor_id}}all">All</option>
+            <option value="{{data.Doctor_id}}today">Today</option>
+        </select>
+        <select name="Search" onchange="window.location=`/BillList/`+this.value;">
+            <option value="#" selected disabled >BILL</option>
+            <option value="all">All</option>
+            <option value="today">Today</option>
+        </select>
+        
+        <a href="/Adischarged/" >Discharge</a>
+        <a href="/ShowFeedback/" >Feedback</a>
+       <a href="/SearchPatient/False">Search Patient</a>
+       
+        <a href="/AdminLogout/" class="logout-btn" >Logout</a>
+    </nav>
+    
+</div>
+
+<div id="boxes">
+    <div id="box1">
+        <div class="text">
+            <p>{{Patient}}</p>
+            <p>Total Patient</p>
+        </div>
+        <div id="icone"> <i style="color:rgb(27, 27, 238);" class="ri-calendar-2-line"></i></div>
+    </div>
+    <div id="box2">
+        <div class="text">
+            <h5>{{doctors}}</h5>
+            <p>Total Doctor</p>
+        </div>
+        <div id="icone"><i style="color: lightgreen;"class="ri-user-line"></i></div>
+    </div>
+    <div id="box3">
+        <div class="text">
+            <h5>{{appointment}}</h5>
+            <p>Total Appointment</p>
+        </div>
+        <div id="icone"><i style="color: orange;" class="ri-checkbox-circle-fill"></i></div>
+    </div>
+
+
+</div>
+<div class="container">
+   
+    <h2 class="heading">Welcome, {{data}}!</h2>
+    <div id="tables">
+    <div class="table-container">
+        <h2>Recent Appointments</h2>
+        <table>
+            <thead>
+                
+                <tr>
+                    <th>Patient Name</th>
+                    <th>Doctor Name</th>
+                    <th>Date</th>
+                    <th>Disease</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in Rpatient %}
+                <tr>
+                    <td>{{i.Name}}</td>
+                    <td>{{i.dName}}</td>
+                    <td>{{i.Date}}</td>
+                    <td>{{i.Disease}}</td>
+                    <td>
+                        {% if i.appointed == "True"%}
+                            <p style="color:blue;">Confirmed</P>
+                        {% else %}
+                        <p style="color:green" >Pending</P>
+                        {% endif %}
+                            </td>
+                    
+                </tr>
+                {% endfor %}
+                
+                <!-- Additional rows can be added dynamically or fetched from a database -->
+            </tbody>
+        </table>
+    </div>
+    <div class="table-container">
+        <h2>Recent Doctors</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Doctor Name</th>
+                    <th>Medical_Id</th>
+                    <th>Contact</th>
+                    <th>Speciality</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in Rdoctors %}
+                <tr>
+                    <td>{{i.Name}}</td>
+                    <td>{{i.Medical_Id}}</td>
+                    <td>{{i.Contact}}</td>
+                    <td>{{i.Specialty}}</td>
+                    <td>
+                        {% if i.permanent == "True"%}
+                            <p style="color:blue;">Confirmed</P>
+                        {% else %}
+                        <p style="color:green" >Pending</P>
+                        {% endif %}
+                            </td>
+                </tr>
+                {% endfor %}
+               
+                <!-- Additional rows can be added dynamically or fetched from a database -->
+            </tbody>
+        </table>
+    </div>
+    </div>
+</div>
+
+
+
+</body>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</html>

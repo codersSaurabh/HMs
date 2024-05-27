@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Billing Page</title>
+    <link rel="stylesheet" href="/static/genbil.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Billing Details</h1>
+        <h2>Date:{{date}}</h2>
+        <div class="patient-details">
+            <h2>Patient Information</h2>
+            <form id="patient-form"  method="POST" action="/Genbil/{{id}},{{day}}">{% csrf_token %}
+                {% comment %} <input type="hidden" id="symptoms" name="id" value="{{id}}"><br> {% endcomment %}
+                <label for="medicine-cost">Medicine Cost:</label>
+                <input type="number" id="medicine-cost" name="medicine-cost" required><br>
+                <label for="other-charges">Other Charges:</label>
+                <input type="number" id="other-charges" name="other-charges" required><br>
+                <input type="submit" class="button" value="Generate Billl"/>            </form>
+        </div>
+        
+      
+    </div>
+</body>
+</html>

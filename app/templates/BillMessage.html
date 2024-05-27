@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Centered Message Box</title>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #f0f0f0;
+    }
+    .message-box {
+        width: 300px;
+        padding: 20px;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        text-align: center;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+</style>
+</head>
+<body>
+    <div class="message-box">
+       <h2>Oops! Your {{msg}} is not prepared..</h2>
+        <p>Currently no bill is found for this patient.</p>
+        <p>It will be prepared shortly</p>
+        <p>Contact to Hospital for more details</p><hr>
+        <p>Click here to go home <a href="/">Home</a>   </p>     
+    </div>

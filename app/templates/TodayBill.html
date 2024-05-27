@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Portal - Patients</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        {% comment %} .container {
+            max-width: 135vh;
+            margin: 20px auto;
+            {% comment %} padding: 20px; {% endcomment %}
+            {% comment %} background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        } {% endcomment %} 
+        h1 {
+            background-color: darkorange;
+            text-align: center;
+        }
+         table {
+            
+            
+            margin-top: 20px;
+        }
+        table th, table td {
+            padding: 5px;
+            
+        } 
+       table th {
+            background-color: #f2f2f2;
+        }
+        
+        
+    </style>
+</head>
+<body>
+    <div class="container mt-3">
+        {% if day == "all" %}
+       <h1>All Bills</h1>
+       {% else %}
+        <h1>Today Bills</h1>
+        {% endif %}
+        <table class="table"border="1" >
+            <thead class="thead">
+                <tr>
+                    
+                    <th>Name</th>
+                    <th>Patient_ID</th>
+                    
+                    <th>Email</th>
+                    <th>Phone</th>
+
+                    {% if day == "today"%}
+                    <th>Bed No</th>
+                    <th>Bill</th>
+                    <th>Paid/Unpaid</th>
+                    {%else%}
+                    <th>Total Bill</th>
+                    <th>Balance</th>
+                    <th>Status</th>
+                    
+                    {% endif %}
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    {% for i in data %}
+                    <td>{{i.Name}}</td>
+                    <td>{{i.Patient_id}}</td>
+                    
+                    
+                    <td>{{i.Email}}</td>
+                    <td>{{i.Contact}}</td>
+                    {% if day == "today" %}
+                    <td>{{i.bed}}</td>
+                   <td> 
+                    {% if i.Bill != " " %}
+                    <a class="btn btn-primary ml-3" href="/showbill/{{i.Patient_id}},{{day}}" role="button">Check</a>
+                    {% else %}
+                    <a class="btn btn-success ml-3" href="/Genbil/{{i.Patient_id}},{{day}}" role="button">Generate</a></td>
+                    {% endif %}
+
+                    <td>
+                        {% if i.Paid != " " and i.Paid != "False" %}
+                        <P style="color:green">{{i.Paid}}</P>
+                        {% elif i.Paid == " " %}
+                        <P style="color:green">Not generated</P>
+                        {% else %}
+                        <a class="btn btn-success ml-3" href="/PayBill/{{i.Patient_id}},{{day}}" role="button">Pay</a></td>
+
+                        {% endif %}
+                        </td>
+                    {% else %}
+                    <td>{{i.Total}}</td>
+                    <td>
+                        {{i.Balance}}</td>
+                        <td>{% if i.discharged == "True" %}
+                            <p style="color:green">Discharged</p>
+                            {% else %}
+                            <p style="color:red">Admit</p>
+                            {% endif%}
+                        </td>
+                        {% endif %}
+                </tr>
+                {% endfor %}
+                <!-- Add more rows for oth....................................................er patients -->
+            </tbody>
+        </table>
+        {% if day == "today" and data|length == 0 %}
+        <p>No Bill to show as no patient is admitted</p>
+        {% endif %}
+  </div>
+</body>
+</html>

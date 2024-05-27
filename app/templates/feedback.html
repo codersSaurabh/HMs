@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Form</title>
+    <link rel="stylesheet" href="/static/feedback.css">
+</head>
+<body>
+    <div class="container">
+        <div id="model-content" class="modal">
+            <span
+              class="close"
+              style="display: none"
+              onclick="closeModal('model-content')"
+              >&times;
+            </span>
+            <p style="color: green">{{msg}}</p>
+          </div>
+        <h1>Feedback Form</h1>
+        <form action="#" method="POST">{% csrf_token %}
+            <label for="name"><b>Your Name:</b></label>
+            <input type="text" id="name" name="name" required>
+            <label for="email"><b>Your Email:</b></label>
+            <input type="email" id="email" name="email" required>
+            <label for="message"><b>Your Feedback:</b></label>
+            <textarea id="message" name="message" required></textarea>
+            <button type="submit"><b>Submit Feedback</b></button>
+            <p>Go to Home <a href="/">Click here</a></p>
+        </form>
+    </div>
+</body>
+<script>
+    {% if thank %}
+      document.getElementsByClassName('close')[0].style.display='inline';
+
+  {% endif %}
+  function closeModal(modalId) {
+    var modal = document.getElementById(modalId);
+    modal.style.display = "none";
+  }
+</script>
+</html>

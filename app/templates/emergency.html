@@ -1,0 +1,162 @@
+{% include 'nav.html'%}
+    {%block title %}<title>Emergency Page</title>{% endblock%}
+    
+    {% block css %}    
+    <link
+    href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet"/>
+   <style>
+       html,body{
+    height: 100%;
+    width: 100%;
+    overflow-y: hidden;
+       }
+   
+   
+        .Emain{
+            margin-top: 30px;
+            position:absolute;
+            top:10%;
+            height:100%;
+            width:100%;
+            background-image: url("https://www.acepnow.com/wp-content/uploads/2014/01/ACEN_2014_01_pp29.jpg");
+            background-size: cover;
+        }
+        .containers {
+            background-color: #fafcfde1;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+           
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .containers h1 {
+            text-align: center;
+            color: #e74c3c;
+        }
+        .containers p {
+            text-align: center;
+            color: #34495e;
+            margin-top:10px;
+        }
+        .emergency-button {
+            display: block;
+            width: 300px;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: #e74c3c;
+            color: #fff;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .emergency-button:hover {
+            background-color: #c0392b;
+        }
+        #boxes{
+            
+            display: flex;
+            width: 100%;
+            gap: 20px;
+            height: 40%;
+            padding: 1%;
+            margin-top: 3%;
+        }
+        #box1{
+            border-radius:30px;  
+            background-color:rgb(230, 5, 5);
+            width:40%;
+            height:60%;
+            display: flex;
+            position: relative;
+
+        }
+        #box1:hover{
+            background-color:#ec1313;
+        }
+        
+        #box2{
+            border-radius: 30px;
+            background-color: #0fb2b2;
+            width:40%;
+            height:60%;
+            position: relative;
+            display: flex;
+        }
+        #box2:hover{
+            background-color:#016565;
+        }
+        #box3{
+            border-radius: 30px;
+            position: relative;
+            background-color: #085a78;
+            width:40%;
+            height:60%;
+            display: flex;
+            margin-right: 1rem;
+            
+        }
+        #box3:hover{
+            background-color:  #062734;
+        }
+        .text{
+            position: absolute;
+            top: 20%;
+            left: 5%;
+           
+            color:white;
+        }
+        #icone{
+            position: absolute;
+            top: 32%;
+            right: 3%;
+            height: 50%;
+            width: 20%;
+            background-color:white;
+            border-radius: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #icone i{
+            font-size: 1.5rem;
+        }
+    </style>
+        {% endblock %}
+        {%block body %}
+    <div class="Emain">
+    <div class="containers">
+        <h1>Emergency Page</h1>
+        <p><b>An emergency has occurred. Please follow the instructions provided by hospital staff.</b></p>
+        <a href="#" class="emergency-button">Call Emergency Services</a>
+    </div>
+    <div id="boxes">
+        <div id="box1">
+            <div class="text">
+                <h2>Emergency</h2>
+                <p>0135-6672600,6672663</p>
+            </div>
+            <div id="icone"><i class="ri-phone-line"></i></div>
+        </div>
+        <div id="box2">
+            <div class="text">
+                <h2>Enquiry</h2>
+                <p>0135-6672600,6672423</p>
+            </div>
+            <div id="icone"><i class="ri-information-line"></i></div>
+        </div>
+        <div id="box3">
+            <div class="text">
+                <h2>Blood Bank</h2>
+                <p>01354-567890</p>
+            </div>
+            <div id="icone"><i class="ri-drop-fill"></i></div>
+        </div>
+
+
+    </div>
+    
+</div>
+
+{% endblock %}

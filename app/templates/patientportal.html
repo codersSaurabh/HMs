@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+        }
+
+        #container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+        }
+
+        #left {
+            width: 13%;
+            height: 100%;
+            background-color: rgba(14, 243, 94, 0.836);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+
+
+        }
+        .logout-btn {
+        background-color: #042366;
+        color: #fff;
+        border: none;
+        padding: 8px 16px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        text-decoration: none;
+        }
+    .logout-btn:hover {
+        background-color: #c82333;
+    }
+        #profile {
+            margin-top: 2vh;
+            width: 15%;
+            height: 30%;
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            left: 40%;
+
+            align-items: center;
+            gap: 7px;
+
+
+        }
+
+        #profile p {
+
+            font-size: 0.8rem;
+            text-align: center;
+        }
+
+        #profile h2 {
+            font-weight: 500;
+            text-align: center;
+        }
+
+        #profile img {
+            width: 8vw;
+            height: 50vh;
+            border-radius: 100%;
+            border: 2px solid rgb(204, 204, 67);
+        }
+
+        #links {
+            margin-top: 20%;
+            margin-left: 2%;
+            width: 15%;
+            height: 50%;
+            position: absolute;
+            top: 30%;
+
+
+
+        }
+
+        #element {
+            margin-top: 2vh;
+            display: flex;
+            gap: 1vw;
+            color: white;
+        }
+
+        #element a {
+            text-decoration: none;
+            color: white;
+        }
+
+        #right {
+            width: 90%;
+            height: 100%;
+
+        }
+
+        #right #head {
+            padding: 5px;
+            width: 100%;
+            height: 6%;
+            background-color: rgba(0, 0, 255, 0.682);
+            display: flex;
+            justify-content: space-between;
+            color: white;
+        }
+
+        #head h3 {
+            font-size: 1rem;
+        }
+
+        
+
+
+        #boxes {
+
+            display: flex;
+            width: 100%;
+            gap: 20px;
+            height: 40%;
+            padding: 1%;
+            margin-top: 3%;
+        }
+
+        #box1 {
+            background-color: red;
+            width: 60%;
+            height: 60%;
+            display: flex;
+            position: relative;
+
+        }
+
+        #box2 {
+            background-color: green;
+            width: 60%;
+            height: 60%;
+            position: relative;
+            display: flex;
+        }
+
+        #box3 {
+            position: relative;
+            background-color: blue;
+            width: 60%;
+            height: 60%;
+            display: flex;
+
+        }
+
+        #box4 {
+            background-color: red;
+            width: 60%;
+            height: 60%;
+            display: flex;
+            position: relative;
+
+        }
+
+        #box5 {
+            background-color: rgb(255 129 0);
+            ;
+            width: 60%;
+            height: 60%;
+            position: relative;
+            display: flex;
+        }
+
+        #box6 {
+            position: relative;
+            background-color: blue;
+            width: 60%;
+            height: 60%;
+            display: flex;
+
+        }
+
+        .text {
+            position: absolute;
+            top: 35%;
+            left: 5%;
+            color: rgba(255, 255, 255, 0.807);
+        }
+
+        #icone {
+            position: absolute;
+            top: 32%;
+            right: 3%;
+            height: 50%;
+            width: 20%;
+            background-color: white;
+            border-radius: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #icone i {
+            font-size: 1.5rem;
+        }
+
+        .table-container {
+            padding: 20px;
+
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        table th,
+        table td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: center;
+        }
+
+        table th {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <div id="left">
+
+            <div id="profile">
+                {% if data.Gender == "Male" %}
+                <img src="/media/images/male.jpg" alt="">
+                {% else %}
+
+                       <img src="/media/images/female.png" alt="">
+                {% endif %}
+                <p>Patient</p>
+
+                <h6>{{data.Email}}</h6>
+            </div>
+            <div id="links">
+                <div id="element">
+                    <i class="ri-dashboard-line"></i>
+                    <a href="#">Dashboard</a>
+                </div>
+                <div id="element">
+                    <i class="ri-calendar-line"></i>
+                    <a href="/Pappointmentportal/{{data.Email}},{{data.Gender}}">Appointments</a>
+                </div>
+                
+                <div id="element">
+                    <i class="ri-checkbox-circle-fill"></i>
+                    <a href="/Pdischarge/{{data.Email}}">Discharge</a>
+                </div>
+
+
+
+
+
+
+
+            </div>
+
+        </div>
+        <div id="right">
+            <div id="head">
+                <h3>HOSPITAL MANAGEMENT</h3>
+                <a href="/logoutpatient/" class="logout-btn">logout</a>
+            </div>
+    <div id="boxes">
+        <div id="box1">
+            <div class="text">
+               <h5>{{doctors.Name}}</h5>
+
+                   <p>Doctor Name</p>
+                    </div>
+                    <div id="icone"> <i style="color:rgb(27, 27, 238);" class="ri-account-circle-line"></i></div>
+                </div>
+                <div id="box2">
+                    <div class="text">
+                        <h5>{{data.Disease}}</h5>
+
+                        <p>Symptoms</p>
+                    </div>
+                    <div id="icone"> <i style="color:rgb(27, 27, 238);"class="ri-virus-line"></i></div>
+                </div>
+                <div id="box3">
+                    <div class="text">
+                        <h5>{{doctors.Contact}}</h5>
+
+                        <p>Doctor Mobile</p>
+                    </div>
+                    <div id="icone"> <i style="color:rgb(27, 27, 238);" class="ri-smartphone-line"></i></div>
+                </div>
+                </div>
+            <div id="boxes">
+
+
+                <div id="box1">
+                    <div class="text">
+                        <h5>{{doctors.City}} /
+                            {{doctors.Country}}
+                        </h5>
+
+                        <p>Doctor Address</p>
+                    </div>
+                    <div id="icone"> <i style="color:rgb(27, 27, 238);"class="ri-map-pin-line"></i></div>
+                </div>
+                <div id="box2">
+                    <div class="text">
+                        <h5>{{doctors.Specialty}}</h5>
+
+                        <p>Doctor Department</p>
+                    </div>
+                    <div id="icone"> <i style="color:rgb(27, 27, 238);" class="ri-building-4-line"></i></div>
+                </div>
+                <div id="box3">
+                    <div class="text">
+                        {% if data.checked == "True" %}
+
+                        <h5>Checked </h5>
+                        {% elif data.admitted == "True" and data.discharged == "False" %}
+                        <h5>Admit </h5>
+                        {% elif data.discharged == "True" %}
+                        <h5>Discharged</h5>
+                        {% else %}
+                        <h5>Pending</h5>
+                        {% endif %}
+                        <p>Status<p>
+                    </div>
+                    <div id="icone"> <i style="color:rgb(27, 27, 238);"class="ri-calendar-2-line"></i></div>
+                </div>
+                </div>
+
+
+            </div>

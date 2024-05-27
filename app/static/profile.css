@@ -1,0 +1,91 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html,body{
+    height: 100%;
+    width: 100%;
+    background-image: url("https://t3.ftcdn.net/jpg/06/28/64/22/240_F_628642261_3RKwxs2KwWytPDJGkFFtMvGxJ1iyGvcU.jpg");
+    background-size: cover;
+} 
+.main{
+
+    width:100%;
+    height: 100%;
+}
+.main .container{
+    width:100%;
+    height:70%;
+    display:flex;
+    justify-content: center;
+    
+}
+.container .circle{
+    width:  30%;
+    height: 90%;
+    margin-top:1%;
+    
+}
+.container .about{
+    background-color: rgba(0, 0, 0, 0.575);
+    margin-top:1%;
+    height:90%;
+    width:40%;
+    padding:2% 5%;
+    display: flex;
+    flex-direction: column;
+    gap:5px;
+    color: white;
+    position: relative;
+}
+
+p{
+    font-weight: 600;
+    line-height: 25px;
+}
+.container .about .fees{
+    position:absolute;
+    top:10%;
+    right:10%;
+}
+.container .about .fees h3{
+    text-align: center;
+}
+.container .about .fees p{
+       
+       background-color: red;
+       color: white;
+       height: 25px;
+       width: 85px;
+       text-align: center;
+       font-size: 20px;
+       margin-top: 5%;
+}
+.container .about h3{
+    color:red;
+    font-weight: 600;
+}
+.boxes{
+    width: 100%;
+    height:30%;
+    display: flex; 
+    justify-content: center;
+    gap:10px;
+}
+.boxes .box{
+    margin-top: 3%;
+    margin-bottom:1%;
+    width:10vw;
+    height:18vh;
+    border: 2px solid red;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius:10%;
+    /* background-color: white; */
+}
+.boxes h2{
+    color:#002bff;
+}

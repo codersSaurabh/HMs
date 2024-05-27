@@ -1,0 +1,97 @@
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Portal - Appointments</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        {% comment %} .container {
+            max-width: 135vh;
+            margin: 20px auto;
+            {% comment %} padding: 20px; {% endcomment %}
+            {% comment %} background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        } {% endcomment %} 
+        h1 {
+            background-color: darkorange;
+            text-align: center;
+        }
+         table {
+            
+            
+            margin-top: 20px;
+        }
+        table th, table td {
+            padding: 5px;
+            
+        } 
+       table th {
+            background-color: #f2f2f2;
+        }
+</style>
+</head>
+<body>
+    <div class="container mt-3">
+        <h1 calss="text-center ">Appointment For You</h1>
+        <table border='1' class="table">
+            <thead class="thead">
+                <tr>
+                    <th>Patient Name</th>
+                    <th>Doctor Name</th>
+                    <th>Disease</th>
+                    <th>Date</th>
+                    <th>Status</th>               
+                
+                
+                </tr>
+            </thead>
+           
+            {% for i in data %}
+             <tr>
+                <td>{{i.Name}}</td>
+
+                    <td>{{i.dName}}</td>
+                    <td>{{i.Disease}}</td>
+                    <td>{{i.Date}}</td>
+                    <td>
+                        {% if i.checked == "True" %}
+
+                        <h5 style="color:blue">Checked </h5>
+                        {% elif i.admitted == "True" and i.discharged == "False" %}
+                        <h5 style="color:red">Admit </h5>
+                        <a class="btn btn-success ml-3" href="showbill/{{i.Patient_id}},today" role="button">Bill</a></td>
+
+                        {% elif i.discharged == "True" %}
+                        <h5 style="color:green">Discharged</h5>
+                        {% elif i.appointed == "True" %}
+                        <h5 style="color:green">Confirmed</h5>
+
+                        {% else %}
+                        <h5 style="color:green">Pending</h5>
+                        
+                       {% endif %} 
+                    
+                </tr> 
+             
+                {% endfor %} 
+                <!-- Add more rows for other appointments -->
+            
+        </table>
+  </div>
+</body>
+</html>
+
